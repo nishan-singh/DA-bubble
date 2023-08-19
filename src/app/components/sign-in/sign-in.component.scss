@@ -1,0 +1,14 @@
+@import "../../../variables.scss";
+
+.sign-in-wrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: $color-accent;
+}
+
+.sign-in__image {
+  img {
+    width: 84px;
+    height: 84px;
+  }
+}
