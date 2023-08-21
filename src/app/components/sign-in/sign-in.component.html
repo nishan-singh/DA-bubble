@@ -1,9 +1,19 @@
-<section class="sign-in-wrapper">
-  <section class="sign-in__image">
-    <a href="">
-      <img src="/assets/img/da-logo.svg" alt="Sign In Image" />
-      <h3>DABubble</h3>
-    </a>
+<section
+  class="sign-in-wrapper"
+  [ngClass]="{ 'animation-end': animationState }"
+>
+  <section
+    class="sign-in__image"
+    [ngClass]="{
+      'start-animation': animationState,
+    }"
+  >
+    <img
+      src="/assets/img/da-logo.svg"
+      alt="Sign In Image"
+      [ngClass]="{ 'logo-small': !animationState }"
+    />
+    <h3 [ngClass]="{ 'logo-heading-small': !animationState }">DABubble</h3>
   </section>
   <section class="sign-in">
     <div class="sign-in__info">

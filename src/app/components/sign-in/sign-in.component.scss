@@ -1,14 +1,69 @@
 @import "../../../variables.scss";
+$logo-width: 150px;
 
 .sign-in-wrapper {
-  min-height: 100vh;
-  min-height: 100dvh;
-  background-color: $color-accent;
+}
+
+.animate-end {
+  position: relative;
 }
 
 .sign-in__image {
+  background-color: $color-accent;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
   img {
+    width: $logo-width;
+    height: 120px;
+  }
+  .logo-small {
     width: 84px;
     height: 84px;
+  }
+  h3 {
+    color: $color-secondary;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    z-index: -1;
+    opacity: 0;
+    animation: slideIn 0.75s 0.35s linear forwards;
+  }
+  .logo-heading-small {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+}
+
+.start-animation {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  min-height: 100dvh;
+  min-height: 100vh;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-$logo-width);
+    opacity: 0;
+  }
+  25% {
+    transform: translateX(-$logo-width + $logo-width / 4);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateX(-$logo-width + $logo-width / 2);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateX(-$logo-width + $logo-width / 4 * 3);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
