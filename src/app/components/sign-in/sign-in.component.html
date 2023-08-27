@@ -1,12 +1,9 @@
-<section
-  class="sign-in-wrapper"
-  [ngClass]="{ 'animation-end': animationState }"
->
+<section class="sign-in-wrapper">
   <section
     class="sign-in__image"
     [ngClass]="{
-      'start-animation': animationState,
-    }"
+    'animation-end': !animationState,
+  }"
   >
     <img
       src="/assets/img/da-logo.svg"

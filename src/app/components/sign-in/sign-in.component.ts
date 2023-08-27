@@ -11,6 +11,6 @@ export class SignInComponent {
   constructor() {
     setTimeout(() => {
       this.animationState = false;
-    }, 1200);
+    }, 750);
   }
 }

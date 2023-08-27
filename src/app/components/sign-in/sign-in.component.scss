@@ -9,11 +9,20 @@ $logo-width: 150px;
   background-color: $color-accent;
   isolation: isolate;
   display: flex;
-  flex-direction: column;
-  animation: logoAnimation 1s ease-in-out 1s forwards;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  min-height: 100dvh;
+  min-height: 100vh;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out, background-color 0s ease-in-out;
   img {
     width: $logo-width;
     height: 120px;
+    transition: all 0.5s ease-in-out;
   }
   .logo-small {
     width: 84px;
@@ -22,27 +31,27 @@ $logo-width: 150px;
   h3 {
     color: $color-secondary;
     font-size: clamp(1.5rem, 5vw, 3rem);
-    z-index: -1;
-    opacity: 0;
   }
   .logo-heading-small {
+    color: $color-primary;
     font-size: clamp(1.5rem, 3vw, 2rem);
   }
 }
 
+.animation-end {
+  background-color: transparent;
+  transform: initial;
+  left: 24px;
+  top: 24px;
+  min-height: auto;
+  width: auto;
+}
+
 @keyframes logoAnimation {
   0% {
-    left: 50%;
-    top: 50%;
-    min-height: 100dvh;
-    min-height: 100vh;
-    width: 100%;
-    transform: translate(-50%, -50%);
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5);
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
   }
 }
