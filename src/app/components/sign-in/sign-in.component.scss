@@ -37,7 +37,6 @@ $logo-width: 150px;
     font-size: clamp(1.5rem, 3vw, 2rem);
   }
 }
-
 .animation-end {
   background-color: transparent;
   transform: initial;
@@ -45,6 +44,36 @@ $logo-width: 150px;
   top: 24px;
   min-height: auto;
   width: auto;
+}
+.animation-end {
+  background-color: transparent;
+  transform: initial;
+  left: 24px;
+  top: 24px;
+  min-height: auto;
+  width: auto;
+}
+
+.sign-in {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg-color;
+  &__inner-wrapper {
+    width: 75%;
+    min-height: 550px;
+    max-width: 500px;
+    height: 60vh;
+    background-color: $color-secondary;
+    border-radius: $border-radius;
+  }
+  &__info {
+    text-align: center;
+  }
 }
 
 @keyframes logoAnimation {
