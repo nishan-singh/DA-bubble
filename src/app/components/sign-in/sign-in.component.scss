@@ -1,5 +1,8 @@
-@import "../../../variables.scss";
+@import "../../../variables-mixins.scss";
 $logo-width: 150px;
+$padding-inline: 36px;
+$border-radius: 16px;
+$input-block-padding: 14px;
 
 .animate-end {
   position: relative;
@@ -19,6 +22,7 @@ $logo-width: 150px;
   width: 100%;
   transform: translate(-50%, -50%);
   transition: all 0.5s ease-in-out, background-color 0s ease-in-out;
+  z-index: 999;
   img {
     width: $logo-width;
     height: 120px;
@@ -68,11 +72,44 @@ $logo-width: 150px;
     min-height: 550px;
     max-width: 500px;
     height: 60vh;
+    padding-inline: $mg-large;
     background-color: $color-secondary;
     border-radius: $border-radius;
   }
   &__info {
     text-align: center;
+    padding: $padding-inline;
+  }
+  h1 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: $color-accent;
+    margin-block-end: $mg-normal;
+  }
+}
+
+.sign-in-form {
+  @include flexCenter(column);
+  gap: $mg-large;
+  margin-block-end: $mg-normal;
+  input {
+    width: 100%;
+    padding: $input-block-padding $mg-normal $input-block-padding $mg-large *
+      1.5;
+    border-radius: $border-radius-round;
+    background-color: $bg-color;
+  }
+}
+
+.input-wrapper {
+  width: 100%;
+  position: relative;
+  img {
+    position: absolute;
+    left: $mg-normal;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-inline-end: $mg-small;
+    object-fit: contain;
   }
 }
 
