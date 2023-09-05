@@ -57,6 +57,7 @@ a {
   top: 2.25rem;
   min-height: auto;
   width: auto;
+  z-index: 5;
 }
 
 .sign-in {
@@ -77,6 +78,8 @@ a {
     background-color: $color-secondary;
     border-radius: $border-radius;
     box-shadow: 0px 2px 10px 0px #00000014;
+    overflow: auto;
+    z-index: 10;
     @include flexCenter(column);
   }
   &__info {
@@ -126,6 +129,7 @@ a {
 .sign-in-form {
   @include flexCenter(column);
   margin-block: $mg-normal;
+  width: 100%;
   input {
     width: 100%;
     padding: $input-block-padding $mg-normal $input-block-padding $mg-large *
