@@ -4,8 +4,8 @@ $padding-inline: 36px;
 $border-radius: 16px;
 $input-block-padding: 14px;
 
-.animate-end {
-  position: relative;
+a {
+  color: $color-accent;
 }
 
 .sign-in__image {
@@ -31,6 +31,7 @@ $input-block-padding: 14px;
   .logo-small {
     width: 84px;
     height: 84px;
+    margin-inline-end: $mg-small;
   }
   h3 {
     color: $color-secondary;
@@ -44,16 +45,8 @@ $input-block-padding: 14px;
 .animation-end {
   background-color: transparent;
   transform: initial;
-  left: 24px;
-  top: 24px;
-  min-height: auto;
-  width: auto;
-}
-.animation-end {
-  background-color: transparent;
-  transform: initial;
-  left: 24px;
-  top: 24px;
+  left: 2.25rem;
+  top: 2.25rem;
   min-height: auto;
   width: auto;
 }
@@ -71,7 +64,7 @@ $input-block-padding: 14px;
     width: 75%;
     min-height: 550px;
     max-width: 500px;
-    height: 60vh;
+    height: 75vh;
     padding-inline: $mg-large;
     background-color: $color-secondary;
     border-radius: $border-radius;
@@ -85,12 +78,38 @@ $input-block-padding: 14px;
     color: $color-accent;
     margin-block-end: $mg-normal;
   }
+  &__or {
+    margin-block: $mg-normal;
+  }
+  &__button-wrapper {
+    margin-block: $mg-small $mg-normal;
+    width: 100%;
+    @include flexCenter(row);
+    gap: $mg-normal;
+  }
+}
+
+.login-btn,
+.guest-login {
+  border-radius: $border-radius-round;
+  padding: $input-block-padding $mg-normal;
+  font-weight: bold;
+}
+
+.login-btn {
+  background-color: $color-accent;
+  color: $color-secondary;
+  &:hover {
+    // background-color: $color-accent-dark;
+  }
+}
+.guest-login {
+  border: 1px solid $color-accent;
 }
 
 .sign-in-form {
   @include flexCenter(column);
-  gap: $mg-large;
-  margin-block-end: $mg-normal;
+  margin-block: $mg-normal;
   input {
     width: 100%;
     padding: $input-block-padding $mg-normal $input-block-padding $mg-large *
@@ -103,6 +122,7 @@ $input-block-padding: 14px;
 .input-wrapper {
   width: 100%;
   position: relative;
+  margin-block-end: $mg-normal;
   img {
     position: absolute;
     left: $mg-normal;
@@ -110,6 +130,29 @@ $input-block-padding: 14px;
     transform: translateY(-50%);
     margin-inline-end: $mg-small;
     object-fit: contain;
+  }
+}
+
+.google-sign-up {
+  width: 100%;
+  margin-block-end: $mg-normal;
+  border: 1px solid transparent;
+  border-radius: $border-radius-round;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.025);
+    border-color: $color-accent;
+  }
+  a {
+    @include flexCenter(row);
+    gap: $mg-small;
+    background-color: $bg-color;
+    border-radius: $border-radius-round;
+    padding: $input-block-padding $mg-normal;
+    img {
+      width: 32px;
+      height: 32px;
+    }
   }
 }
 
