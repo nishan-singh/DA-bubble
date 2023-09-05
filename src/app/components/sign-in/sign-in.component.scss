@@ -68,6 +68,7 @@ a {
     padding-inline: $mg-large;
     background-color: $color-secondary;
     border-radius: $border-radius;
+    box-shadow: 0px 2px 10px 0px #00000014;
   }
   &__info {
     text-align: center;
@@ -99,12 +100,18 @@ a {
 .login-btn {
   background-color: $color-accent;
   color: $color-secondary;
+  transition: all 225ms ease-in-out;
   &:hover {
-    // background-color: $color-accent-dark;
+    background-color: $color-accent-hover;
   }
 }
 .guest-login {
   border: 1px solid $color-accent;
+  transition: all 225ms ease-in-out;
+  &:hover {
+    color: $color-secondary;
+    background-color: $color-accent-hover-2;
+  }
 }
 
 .sign-in-form {
