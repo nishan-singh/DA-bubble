@@ -1,0 +1,16 @@
+@import "../../../variables-mixins.scss";
+
+header {
+  @include flexCenter(row, space-between, center);
+  width: 100%;
+  padding: $mg-small $mg-normal;
+}
+
+.logo-wrapper {
+  @include flexCenter(row, flex-start, center);
+  img {
+    width: 48px;
+    height: 48px;
+    margin-inline-end: $mg-small;
+  }
+}

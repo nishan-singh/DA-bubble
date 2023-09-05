@@ -1,0 +1,13 @@
+@import "../../../variables-mixins.scss";
+
+aside {
+}
+
+header {
+  @include flexCenter(row, flex-start, flex-start);
+  img {
+    width: 48px;
+    height: 48px;
+    margin-right: $mg-small;
+  }
+}
