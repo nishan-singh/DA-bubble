@@ -3,6 +3,7 @@
 header {
   @include flexCenter(row, space-between, center);
   width: 100%;
+  height: 84px;
   padding: $mg-small $mg-normal;
 }
 
@@ -12,5 +13,34 @@ header {
     width: 48px;
     height: 48px;
     margin-inline-end: $mg-small;
+  }
+}
+
+.search-bar-wrapper {
+  flex-basis: 50%;
+  height: 90%;
+  position: relative;
+  input {
+    width: 100%;
+    height: 100%;
+    padding: $mg-small $mg-normal;
+    border-radius: $border-radius-round;
+  }
+  img {
+    position: absolute;
+    top: 50%;
+    right: $mg-normal;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.user-icon-wrapper {
+  @include flexCenter(row, flex-end, center);
+  gap: $mg-small;
+  .user-icon {
+    width: 48px;
+    height: 48px;
   }
 }
