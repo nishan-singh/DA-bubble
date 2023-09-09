@@ -7,6 +7,7 @@ aside {
   padding: $mg-normal;
   border-radius: $br-big;
   min-height: calc(100vh - 1.5 * $header-height);
+  position: relative;
 }
 
 header {
@@ -25,5 +26,24 @@ header {
       width: 24px;
       height: 24px;
     }
+  }
+}
+
+.channels-btn {
+  @include flexCenter(row, flex-start, center);
+}
+
+.workspace-close-btn {
+  position: absolute;
+  top: 50%;
+  left: -$mg-normal;
+  background-color: $color-secondary;
+  border-radius: 0 $br-big $br-big 0;
+  box-shadow: 4px 4px 7px 0px #00000033;
+  padding: $mg-normal 10px;
+  p {
+    text-align: center;
+    transform: rotate(180deg);
+    writing-mode: vertical-lr;
   }
 }
