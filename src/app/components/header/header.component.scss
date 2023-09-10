@@ -24,12 +24,12 @@ header {
   input {
     width: 100%;
     height: 100%;
-    padding: $mg-small $mg-normal;
+    padding: $mg-normal;
     border-radius: $border-radius-round;
   }
   img {
     position: absolute;
-    top: 50%;
+    margin-block: $mg-normal;
     right: $mg-normal;
     transform: translateY(-50%);
     width: 24px;
