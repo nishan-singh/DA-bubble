@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
+  toggleChannels = false;
+  toggleDirectMessages = false;
+
   closeSidebar() {
     document.getElementById('sidebar')?.classList.toggle('sidebar-toggle');
   }

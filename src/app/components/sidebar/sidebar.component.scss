@@ -8,15 +8,11 @@ aside {
   border-radius: $br-big;
   min-height: calc(100vh - 1.5 * $header-height);
   position: relative;
-  transition: width 225ms ease-in-out;
+  transition: transform 225ms ease-in-out;
 }
 
 .sidebar-toggle {
-  width: 0;
-  padding: 0;
-  *:not(:last-child) {
-    display: none;
-  }
+  transform: translateX(-120%);
 }
 
 header {
@@ -38,21 +34,80 @@ header {
   }
 }
 
-.channels-btn {
-  @include flexCenter(row, flex-start, center);
-}
-
 .workspace-close-btn {
-  position: absolute;
+  position: fixed;
   top: 50%;
-  left: -$mg-normal;
+  left: 0;
   background-color: $color-secondary;
   border-radius: 0 $br-big $br-big 0;
   box-shadow: 4px 4px 7px 0px #00000033;
   padding: $mg-normal 10px;
+  z-index: 999;
   p {
     text-align: center;
     transform: rotate(180deg);
     writing-mode: vertical-lr;
+  }
+}
+
+.channels-btn,
+.direct-messages-btn,
+.add-channel-btn {
+  @include flexCenter(row, flex-start, center);
+  margin-block-end: $mg-small;
+  gap: 6px;
+  &__icon {
+    rotate: -90deg;
+    transition: rotate 125ms ease-in-out;
+  }
+  &__active {
+    rotate: 0deg;
+  }
+}
+.channels-list,
+.direct-messages-list {
+  display: none;
+  &__active {
+    display: block;
+  }
+  li {
+    margin-block-end: $mg-small;
+    button {
+      border-radius: $br-small;
+      font-weight: bold;
+      width: 100%;
+      padding: 8px 12px;
+      text-align: left;
+      &:hover {
+        background-color: $bg-color;
+        color: $color-accent-hover;
+      }
+    }
+    .add-channel-btn {
+      font-weight: normal;
+      &:hover {
+        background-color: transparent;
+        svg {
+          fill: $color-accent-hover;
+        }
+      }
+    }
+  }
+  span {
+    margin-inline-start: 4px;
+  }
+}
+
+.direct-messages-list {
+  li {
+    button {
+      @include flexCenter(row, flex-start, center);
+      gap: 6px;
+      font-weight: normal;
+      img {
+        width: 42px;
+        height: 42px;
+      }
+    }
   }
 }
