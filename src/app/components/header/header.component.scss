@@ -161,3 +161,17 @@ figcaption .email-info-wrapper {
     margin-inline-start: $mg-small;
   }
 }
+
+@media (max-width: 768px) {
+  .search-bar-wrapper {
+    display: none;
+  }
+}
+
+@media (max-width: 572px) {
+  .user-icon-wrapper {
+    h3 {
+      display: none;
+    }
+  }
+}

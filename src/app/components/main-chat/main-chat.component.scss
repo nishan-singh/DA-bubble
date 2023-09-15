@@ -8,3 +8,9 @@
   border-radius: $br-big;
   padding: $mg-normal;
 }
+
+@media (max-width: 768px) {
+  .main-chat-wrapper {
+    display: none;
+  }
+}
