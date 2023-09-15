@@ -8,6 +8,7 @@ aside {
   border-radius: $br-big;
   min-height: calc(100vh - 1.5 * $header-height);
   position: relative;
+  z-index: -1;
   transition: transform 225ms ease-in-out;
 }
 
