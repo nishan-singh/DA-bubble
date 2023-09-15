@@ -8,14 +8,27 @@
     <img src="/assets/img/icons/search.svg" alt="" />
   </div>
   <div class="user-icon-wrapper">
-    <h3>Frederik Beck</h3>
-    <img
-      src="/assets/img/icons/user-icon.svg"
-      alt="user-icon"
-      class="user-icon"
-    />
-    <button>
+    <button (click)="togglePopUp = !togglePopUp">
+      <h3>Frederik Beck</h3>
+      <img
+        src="/assets/img/icons/user-icon.svg"
+        alt="user-icon"
+        class="user-icon"
+      />
       <img src="/assets/img/icons/arrow-down.svg" alt="arrow-down" />
     </button>
+    <div
+      class="user-actions-wrapper"
+      (click)="togglePopUp = !togglePopUp"
+      [ngClass]="{ 'close-dialog': togglePopUp }"
+    ></div>
+    <ul class="user-actions" [ngClass]="{ 'close-dialog': togglePopUp }">
+      <li>
+        <a href="#">Profile</a>
+      </li>
+      <li>
+        <a href="#">Log out</a>
+      </li>
+    </ul>
   </div>
 </header>

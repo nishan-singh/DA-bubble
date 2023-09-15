@@ -38,10 +38,49 @@ header {
 }
 
 .user-icon-wrapper {
-  @include flexCenter(row, flex-end, center);
-  gap: $mg-small;
-  .user-icon {
-    width: 48px;
-    height: 48px;
+  position: relative;
+  button {
+    @include flexCenter(row, flex-end, center);
+    gap: $mg-small;
+    .user-icon {
+      width: 48px;
+      height: 48px;
+    }
   }
+}
+
+.user-actions-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 99;
+}
+
+.user-actions {
+  position: absolute;
+  background-color: $color-secondary;
+  border-radius: $br-normal 0 $br-normal $br-normal;
+  padding: $mg-normal $mg-large;
+  top: calc(100% + 8px);
+  right: 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  z-index: 999;
+  li {
+    margin-block-end: $mg-small;
+    &:last-child {
+      margin-block-end: 0;
+    }
+    a {
+      color: $color-primary;
+    }
+  }
+}
+
+.close-dialog {
+  opacity: 0;
+  z-index: -1;
 }
