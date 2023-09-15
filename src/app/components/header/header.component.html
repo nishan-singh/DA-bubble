@@ -1,4 +1,4 @@
-<header>
+<header class="header">
   <div class="logo-wrapper">
     <img src="/assets/img/da-logo.svg" alt="logo" />
     <h2>DABubble</h2>
@@ -18,17 +18,101 @@
       <img src="/assets/img/icons/arrow-down.svg" alt="arrow-down" />
     </button>
     <div
-      class="user-actions-wrapper"
-      (click)="togglePopUp = !togglePopUp"
+      class="backdrop"
+      (click)="togglePopUp = !togglePopUp; userInfosPopUp = false"
       [ngClass]="{ 'close-dialog': togglePopUp }"
     ></div>
     <ul class="user-actions" [ngClass]="{ 'close-dialog': togglePopUp }">
       <li>
-        <a href="#">Profile</a>
+        <button type="button" (click)="userInfosPopUp = !userInfosPopUp">
+          Profile
+        </button>
       </li>
       <li>
-        <a href="#">Log out</a>
+        <a routerLink="sign-in">Log out</a>
       </li>
     </ul>
+    <section
+      class="user-info-wrapper"
+      [ngClass]="{
+        'd-none': !userInfosPopUp
+      }"
+    >
+      <header>
+        <h4>Profil</h4>
+        <button
+          aria-label="close button"
+          (click)="userInfosPopUp = !userInfosPopUp"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <mask
+              id="mask0_10279_7834"
+              style="mask-type: alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="24"
+              height="24"
+            >
+              <rect width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_10279_7834)">
+              <path
+                d="M12 13.4L7.10005 18.3C6.91672 18.4833 6.68338 18.575 6.40005 18.575C6.11672 18.575 5.88338 18.4833 5.70005 18.3C5.51672 18.1167 5.42505 17.8833 5.42505 17.6C5.42505 17.3167 5.51672 17.0833 5.70005 16.9L10.6 12L5.70005 7.09999C5.51672 6.91665 5.42505 6.68332 5.42505 6.39999C5.42505 6.11665 5.51672 5.88332 5.70005 5.69999C5.88338 5.51665 6.11672 5.42499 6.40005 5.42499C6.68338 5.42499 6.91672 5.51665 7.10005 5.69999L12 10.6L16.9 5.69999C17.0834 5.51665 17.3167 5.42499 17.6 5.42499C17.8834 5.42499 18.1167 5.51665 18.3 5.69999C18.4834 5.88332 18.575 6.11665 18.575 6.39999C18.575 6.68332 18.4834 6.91665 18.3 7.09999L13.4 12L18.3 16.9C18.4834 17.0833 18.575 17.3167 18.575 17.6C18.575 17.8833 18.4834 18.1167 18.3 18.3C18.1167 18.4833 17.8834 18.575 17.6 18.575C17.3167 18.575 17.0834 18.4833 16.9 18.3L12 13.4Z"
+                fill="black"
+              />
+            </g>
+          </svg>
+        </button>
+      </header>
+      <figure class="user-infos">
+        <img src="/assets/img/icons/user-icon.svg" alt="User Icon" />
+        <figcaption>
+          <div class="user-personal-infos">
+            <div class="user-name">
+              <h3>Frederik Beck</h3>
+              <p class="status">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="8" cy="8.5" r="8" fill="#92C83E" />
+                </svg>
+                Active
+              </p>
+            </div>
+            <button>Bearbeiten</button>
+          </div>
+          <div class="email-info-wrapper">
+            <h4>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 26 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 20C2.3125 20 1.72417 19.7554 1.235 19.2663C0.745 18.7763 0.5 18.1875 0.5 17.5V2.5C0.5 1.8125 0.745 1.22417 1.235 0.735C1.72417 0.245 2.3125 0 3 0H23C23.6875 0 24.2763 0.245 24.7663 0.735C25.2554 1.22417 25.5 1.8125 25.5 2.5V17.5C25.5 18.1875 25.2554 18.7763 24.7663 19.2663C24.2763 19.7554 23.6875 20 23 20H3ZM23 5L13.6562 10.8438C13.5521 10.9062 13.4425 10.9529 13.3275 10.9837C13.2133 11.0154 13.1042 11.0312 13 11.0312C12.8958 11.0312 12.7867 11.0154 12.6725 10.9837C12.5575 10.9529 12.4479 10.9062 12.3438 10.8438L3 5V17.5H23V5ZM13 8.75L23 2.5H3L13 8.75ZM3 5.3125V3.46875V3.5V3.48375V5.3125Z"
+                  fill="black"
+                />
+              </svg>
+
+              E-Mail-Addresse
+            </h4>
+            <p>fred.beck@gmail.com</p>
+          </div>
+        </figcaption>
+      </figure>
+    </section>
   </div>
 </header>

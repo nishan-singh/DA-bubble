@@ -1,6 +1,6 @@
 @import "../../../variables-mixins.scss";
 
-header {
+.header {
   @include flexCenter(row, space-between, center);
   width: 100%;
   height: $header-height;
@@ -49,7 +49,7 @@ header {
   }
 }
 
-.user-actions-wrapper {
+.backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -57,30 +57,107 @@ header {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 99;
+  transition: all 150ms ease-in-out;
 }
 
-.user-actions {
+.user-actions,
+.user-info-wrapper {
   position: absolute;
   background-color: $color-secondary;
   border-radius: $br-normal 0 $br-normal $br-normal;
-  padding: $mg-normal $mg-large;
+  padding: $mg-normal $mg-normal;
   top: calc(100% + 8px);
   right: 0;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  font-weight: bold;
   z-index: 999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   li {
-    margin-block-end: $mg-small;
+    width: 100%;
     &:last-child {
       margin-block-end: 0;
     }
-    a {
+    a,
+    button {
+      border-radius: $btn-border-radius;
+      font-weight: bold;
       color: $color-primary;
+      width: 100%;
+      display: block;
+      text-align: center;
+      padding-block: 12px;
+      transition: all 150ms ease-in-out;
+    }
+    a:hover {
+      color: $color-accent-hover;
+      background-color: $bg-color;
     }
   }
+}
+
+.user-actions {
+  @include flexCenter(column, flex-start, center);
+  min-width: 150px;
 }
 
 .close-dialog {
   opacity: 0;
   z-index: -1;
+}
+
+.user-info-wrapper {
+  padding-inline: $mg-normal;
+  min-width: 300px;
+  header,
+  .user-infos,
+  figcaption {
+    width: 100%;
+  }
+  header {
+    @include flexCenter(row, space-between, center);
+    margin-block-end: $mg-normal;
+  }
+}
+
+.user-infos {
+  @include flexCenter(column, center, center);
+  gap: $mg-small;
+  img {
+    width: 84px;
+    height: 84px;
+  }
+}
+
+figcaption .user-personal-infos {
+  @include flexCenter(row, space-between, center);
+  gap: $mg-small;
+  margin-block-end: $mg-normal;
+  h3 {
+    font-size: 1.2rem;
+    margin-block-end: 12px;
+  }
+  .status {
+    font-size: 0.8rem;
+    color: $status-active-color;
+    @include flexCenter(row, flex-start, center);
+    gap: 4px;
+  }
+  button {
+    font-size: 0.8rem;
+    flex-basis: 25%;
+    font-weight: 600;
+    color: $color-accent;
+  }
+}
+
+figcaption .email-info-wrapper {
+  h4 {
+    @include flexCenter(row, flex-start, center);
+    gap: 4px;
+    font-size: 0.9rem;
+    margin-block-end: $mg-small;
+  }
+  p {
+    font-size: 0.8rem;
+    color: $mail-color;
+    margin-inline-start: $mg-small;
+  }
 }
