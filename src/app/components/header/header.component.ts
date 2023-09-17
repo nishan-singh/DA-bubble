@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   togglePopUp = true;
   userInfosPopUp = false;
+  editUserInfosPopUp = false;
 }

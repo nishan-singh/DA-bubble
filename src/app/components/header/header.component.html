@@ -32,14 +32,14 @@
         <a routerLink="sign-in">Log out</a>
       </li>
     </ul>
-    <section
+    <article
       class="user-info-wrapper"
       [ngClass]="{
         'd-none': !userInfosPopUp
       }"
     >
       <header>
-        <h4>Profil</h4>
+        <h4>{{ !editUserInfosPopUp ? "Profil" : "Dein Profil bearbeiten" }}</h4>
         <button
           aria-label="close button"
           (click)="userInfosPopUp = !userInfosPopUp"
@@ -71,7 +71,7 @@
           </svg>
         </button>
       </header>
-      <figure class="user-infos">
+      <figure class="user-infos" *ngIf="!editUserInfosPopUp; else editUser">
         <img src="/assets/img/icons/user-icon.svg" alt="User Icon" />
         <figcaption>
           <div class="user-personal-infos">
@@ -90,7 +90,9 @@
                 Active
               </p>
             </div>
-            <button>Bearbeiten</button>
+            <button (click)="editUserInfosPopUp = !editUserInfosPopUp">
+              Bearbeiten
+            </button>
           </div>
           <div class="email-info-wrapper">
             <h4>
@@ -112,6 +114,21 @@
           </div>
         </figcaption>
       </figure>
-    </section>
+      <ng-template #editUser>
+        <div class="edit-user-wrapper">
+          <img src="/assets/img/icons/user-icon.svg" alt="User Icon" />
+          <form action="">
+            <label for="user-name"> Völlständiger Name </label>
+            <input type="text" id="user-name" placeholder="Frederik Beck" />
+            <label for="user-email"> E-Mail-Addresse </label>
+            <input
+              type="email"
+              id="user-email"
+              placeholder="fred.beck@gmail.com"
+            />
+          </form>
+        </div>
+      </ng-template>
+    </article>
   </div>
 </header>
