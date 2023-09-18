@@ -116,7 +116,9 @@
       </figure>
       <ng-template #editUser>
         <div class="edit-user-wrapper">
-          <img src="/assets/img/icons/user-icon.svg" alt="User Icon" />
+          <div class="img-wrapper">
+            <img src="/assets/img/icons/user-icon.svg" alt="User Icon" />
+          </div>
           <form action="">
             <label for="user-name"> Völlständiger Name </label>
             <input type="text" id="user-name" placeholder="Frederik Beck" />
@@ -126,6 +128,10 @@
               id="user-email"
               placeholder="fred.beck@gmail.com"
             />
+            <p class="btn-wrapper">
+              <button type="button">Abbrechen</button>
+              <button type="submit">Speichern</button>
+            </p>
           </form>
         </div>
       </ng-template>

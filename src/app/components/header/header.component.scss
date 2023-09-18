@@ -162,6 +162,50 @@ figcaption .email-info-wrapper {
   }
 }
 
+.edit-user-wrapper {
+  .img-wrapper {
+    @include flexCenter(column, center, center);
+    margin-block-end: $mg-normal;
+    img {
+      width: 84px;
+      height: 84px;
+    }
+  }
+  form {
+    @include flexCenter(column, center, flex-start);
+    gap: 12px;
+  }
+  .btn-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-block-start: $mg-small;
+  }
+  button {
+    font-size: 0.8rem;
+    flex-basis: 25%;
+    font-weight: 600;
+    background-color: $color-accent;
+    padding: 8px $mg-small;
+    border-radius: $btn-border-radius;
+    color: $color-secondary;
+  }
+  label {
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
+  input {
+    width: 100%;
+    padding: 6px $mg-small;
+    border: 2px solid $bg-color;
+    border-radius: $border-radius-round;
+    &:focus {
+      border: 1px solid $color-accent;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .search-bar-wrapper {
     display: none;
