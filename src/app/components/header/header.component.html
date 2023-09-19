@@ -19,7 +19,11 @@
     </button>
     <div
       class="backdrop"
-      (click)="togglePopUp = !togglePopUp; userInfosPopUp = false"
+      (click)="
+        togglePopUp = !togglePopUp;
+        userInfosPopUp = false;
+        editUserInfosPopUp = false
+      "
       [ngClass]="{ 'close-dialog': togglePopUp }"
     ></div>
     <ul class="user-actions" [ngClass]="{ 'close-dialog': togglePopUp }">
@@ -129,7 +133,12 @@
               placeholder="fred.beck@gmail.com"
             />
             <p class="btn-wrapper">
-              <button type="button">Abbrechen</button>
+              <button
+                type="button"
+                (click)="editUserInfosPopUp = !editUserInfosPopUp"
+              >
+                Abbrechen
+              </button>
               <button type="submit">Speichern</button>
             </p>
           </form>
