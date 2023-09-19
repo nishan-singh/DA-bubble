@@ -9,6 +9,32 @@
   padding: $mg-normal;
 }
 
+header {
+  @include flexCenter(row, space-between, center);
+}
+
+.users-list-wrapper {
+  .users-list-btn {
+    @include flexCenter(row, center, center);
+    background-color: $bg-color;
+    padding: 2px 4px;
+    border-radius: $border-radius-round;
+    padding-inline-end: -12px;
+  }
+  img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid $color-secondary;
+  }
+  img:nth-child(2) {
+    transform: translateX(-8px);
+  }
+  img:nth-child(3) {
+    transform: translateX(-14px);
+  }
+}
+
 @media (max-width: 768px) {
   .main-chat-wrapper {
     display: none;
