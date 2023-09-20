@@ -19,9 +19,15 @@ header {
 .group-info-btn {
   @include flexCenter(row, center, center);
   gap: $mg-small;
-  img {
-    width: 14px;
-    height: 14px;
+  padding: 8px $mg-small;
+  border-radius: $br-normal;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: $bg-color;
+    color: $color-accent;
+    svg {
+      fill: $color-accent;
+    }
   }
 }
 
