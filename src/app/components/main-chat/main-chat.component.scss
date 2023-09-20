@@ -34,12 +34,19 @@ header {
 .users-list-wrapper {
   display: flex;
   gap: $mg-small;
-  .users-list-btn {
-    @include flexCenter(row, center, center);
+}
+
+.users-list-btn {
+  @include flexCenter(row, center, center);
+  padding: 2px 6px;
+  border-radius: $border-radius-round;
+  transition: all 0.2s ease-in-out;
+  &:hover {
     background-color: $bg-color;
-    padding: 2px 4px;
-    border-radius: $border-radius-round;
-    padding-inline-end: -12px;
+    color: $color-accent;
+    svg {
+      fill: $color-accent;
+    }
   }
   img {
     width: 32px;
@@ -52,6 +59,23 @@ header {
   }
   img:nth-child(3) {
     transform: translateX(-14px);
+    margin-inline-end: -8px;
+  }
+}
+
+.add-user-btn {
+  @include flexCenter(row, center, center);
+  background-color: $bg-color;
+  border-radius: 50%;
+  padding: 6px 8px;
+  svg {
+    transition: all 0.2s ease-in-out;
+  }
+  &:hover {
+    svg {
+      transform: scale(1.1);
+      fill: $color-accent;
+    }
   }
 }
 
