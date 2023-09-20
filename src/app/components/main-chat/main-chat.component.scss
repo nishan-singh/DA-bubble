@@ -16,6 +16,15 @@ header {
   border-radius: $br-big $br-big 0 0;
 }
 
+.group-info-btn {
+  @include flexCenter(row, center, center);
+  gap: $mg-small;
+  img {
+    width: 14px;
+    height: 14px;
+  }
+}
+
 .users-list-wrapper {
   display: flex;
   gap: $mg-small;
