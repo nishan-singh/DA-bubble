@@ -14,6 +14,8 @@ header {
 }
 
 .users-list-wrapper {
+  display: flex;
+  gap: $mg-small;
   .users-list-btn {
     @include flexCenter(row, center, center);
     background-color: $bg-color;
