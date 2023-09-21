@@ -8,6 +8,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainChatComponent } from './components/main-chat/main-chat.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { MainChatComponent } from './components/main-chat/main-chat.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]
