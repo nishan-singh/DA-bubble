@@ -8,10 +8,16 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainChatComponent } from './components/main-chat/main-chat.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+
+import * as firebase from 'firebase/app';
+
+firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
@@ -20,16 +26,17 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     SidebarComponent,
     HomepageComponent,
     HeaderComponent,
-    MainChatComponent
+    MainChatComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
