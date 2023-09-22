@@ -22,14 +22,52 @@
           verwendest.
         </p>
       </div>
-      <form action="" class="sign-in-form">
+      <form
+        class="sign-in-form"
+        [formGroup]="registerForm"
+        (ngSubmit)="signIn()"
+      >
         <div class="input-wrapper">
           <img src="/assets/img/icons/mail.svg" alt="Email Logo Bild" />
-          <input type="email" id="email" placeholder="beispielname@email.com" />
+          <input
+            type="email"
+            id="email"
+            placeholder="beispielname@email.com"
+            formControlName="email"
+            autocomplete="name"
+            [class.invalid]="
+              registerForm.get('email')?.invalid &&
+              (registerForm.get('email')?.touched ||
+                registerForm.get('email')?.dirty ||
+                isSubmitted)
+            "
+          />
+          <p
+            *ngIf="
+              registerForm.get('email')?.hasError('required') &&
+              (registerForm.get('email')?.touched ||
+                registerForm.get('email')?.dirty ||
+                isSubmitted)
+            "
+            class="error"
+          >
+            This field is required and must be a valid email address.
+          </p>
         </div>
         <div class="input-wrapper">
           <img src="/assets/img/icons/lock.svg" alt="Passwort Logo Bild" />
-          <input type="password" id="password" placeholder="Passwort" />
+          <input
+            type="password"
+            id="password"
+            placeholder="Passwort"
+            formControlName="password"
+            [class.invalid]="
+              registerForm.get('email')?.invalid &&
+              (registerForm.get('email')?.touched ||
+                registerForm.get('email')?.dirty ||
+                isSubmitted)
+            "
+          />
         </div>
         <div class="sign-in__forgot-password-wrapper">
           <a href="#">Passwort vergessen?</a>
