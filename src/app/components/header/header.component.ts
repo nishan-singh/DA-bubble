@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { getAuth } from 'firebase/auth';
 
 @Component({
   selector: 'app-header',
@@ -9,4 +10,9 @@ export class HeaderComponent {
   togglePopUp = true;
   userInfosPopUp = false;
   editUserInfosPopUp = false;
+
+  signOut() {
+    const auth = getAuth();
+    auth.signOut();
+  }
 }
