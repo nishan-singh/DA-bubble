@@ -32,7 +32,6 @@ export class SignInComponent {
       .then((userCredential) => {
         // Signed in
         this.router.navigate(['/']);
-        console.log(userCredential.user);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -40,5 +39,18 @@ export class SignInComponent {
         console.log(errorCode, errorMessage);
       });
     this.isSubmitted = true;
+  }
+
+  guestLogin() {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, 'guest@gmail.com', 'Password12345')
+      .then((userCredential) => {
+        // Signed in
+        this.router.navigate(['/']);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
   }
 }
