@@ -1,12 +1,5 @@
-import { Component, inject } from '@angular/core';
-import {
-  Firestore,
-  collection,
-  collectionData,
-  doc,
-  getDoc,
-  onSnapshot,
-} from '@angular/fire/firestore';
+import { Component } from '@angular/core';
+import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 @Component({
