@@ -21,7 +21,6 @@ export class MainChatComponent {
     const auth = getAuth();
     onAuthStateChanged(auth, async (user: any) => {
       if (user) {
-        console.log(user.uid);
         const userDoc = doc(this.firestore, 'channelsList', user.uid);
         const userSnapshot = await getDoc(userDoc);
         console.log(userSnapshot.data());
