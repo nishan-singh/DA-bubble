@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signInAnonymously,
+} from 'firebase/auth';
 
 @Component({
   selector: 'app-sign-in',
@@ -43,7 +47,7 @@ export class SignInComponent {
 
   guestLogin() {
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, 'guest@gmail.com', 'Password12345')
+    signInAnonymously(auth)
       .then((userCredential) => {
         // Signed in
         this.router.navigate(['/']);
