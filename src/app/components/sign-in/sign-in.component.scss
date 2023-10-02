@@ -159,6 +159,10 @@ a {
   color: $error-msg-color;
 }
 
+.invalid {
+  font-size: 0.9rem;
+}
+
 .google-sign-up {
   width: 100%;
   margin-block-end: $mg-normal;

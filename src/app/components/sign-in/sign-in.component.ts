@@ -15,6 +15,7 @@ export class SignInComponent {
     password: ['', Validators.required],
   });
   isSubmitted = false;
+  errorMsg: string | undefined;
 
   constructor(private router: Router, private fm: FormBuilder) {
     setTimeout(() => {
@@ -36,20 +37,17 @@ export class SignInComponent {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        this.errorMsg = errorMessage;
       });
     this.isSubmitted = true;
   }
 
   guestLogin() {
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, 'guest@gmail.com', 'Password12345')
-      .then((userCredential) => {
+    signInWithEmailAndPassword(auth, 'guest@gmail.com', 'Password12345').then(
+      (userCredential) => {
         this.router.navigate(['/']);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+      }
+    );
   }
 }
