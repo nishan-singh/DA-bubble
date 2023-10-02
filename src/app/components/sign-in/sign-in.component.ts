@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  signInAnonymously,
-} from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 @Component({
   selector: 'app-sign-in',
@@ -27,6 +23,7 @@ export class SignInComponent {
   }
 
   signIn() {
+    if (this.registerForm.invalid) return;
     const auth = getAuth();
     signInWithEmailAndPassword(
       auth,
@@ -34,7 +31,6 @@ export class SignInComponent {
       this.registerForm.value.password || ''
     )
       .then((userCredential) => {
-        // Signed in
         this.router.navigate(['/']);
       })
       .catch((error) => {
@@ -47,9 +43,8 @@ export class SignInComponent {
 
   guestLogin() {
     const auth = getAuth();
-    signInAnonymously(auth)
+    signInWithEmailAndPassword(auth, 'guest@gmail.com', 'Password12345')
       .then((userCredential) => {
-        // Signed in
         this.router.navigate(['/']);
       })
       .catch((error) => {
