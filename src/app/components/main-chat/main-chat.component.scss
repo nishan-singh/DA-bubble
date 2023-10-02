@@ -88,6 +88,9 @@ header {
   border: 1px solid $border-color;
   padding: $mg-small $mg-normal;
   border-radius: $br-normal;
+  input {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
