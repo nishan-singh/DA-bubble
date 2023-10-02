@@ -73,7 +73,7 @@ a {
     width: 75%;
     min-height: 550px;
     max-width: 500px;
-    height: 75vh;
+    height: 85vh;
     padding-inline: $mg-large;
     background-color: $color-secondary;
     border-radius: $border-radius;
@@ -151,6 +151,12 @@ a {
     margin-inline-end: $mg-small;
     object-fit: contain;
   }
+}
+
+.error {
+  margin-block-start: 4px;
+  font-size: 0.8rem;
+  color: $error-msg-color;
 }
 
 .google-sign-up {

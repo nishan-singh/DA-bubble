@@ -51,7 +51,7 @@
             "
             class="error"
           >
-            This field is required and must be a valid email address.
+            *Diese E-Mail ist leider ungültig.
           </p>
         </div>
         <div class="input-wrapper">
@@ -68,6 +68,17 @@
                 isSubmitted)
             "
           />
+          <p
+            *ngIf="
+              registerForm.get('password')?.hasError('required') &&
+              (registerForm.get('password')?.touched ||
+                registerForm.get('password')?.dirty ||
+                isSubmitted)
+            "
+            class="error"
+          >
+            Falsches Passwort. Bitte noch einmal versuchen.
+          </p>
         </div>
         <div class="sign-in__forgot-password-wrapper">
           <a href="#">Passwort vergessen?</a>
