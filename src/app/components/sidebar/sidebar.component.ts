@@ -1,17 +1,6 @@
-import { Component, inject } from '@angular/core';
-import {
-  getFirestore,
-  Firestore,
-  doc,
-  getDoc,
-  getDocs,
-  collection,
-  query,
-  collectionData,
-} from '@angular/fire/firestore';
+import { Component } from '@angular/core';
+import { Firestore, doc, getDocs, collection } from '@angular/fire/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-// import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
