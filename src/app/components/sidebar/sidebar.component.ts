@@ -1,6 +1,17 @@
-import { Component } from '@angular/core';
-import { Firestore, doc, getDoc } from '@angular/fire/firestore';
+import { Component, inject } from '@angular/core';
+import {
+  getFirestore,
+  Firestore,
+  doc,
+  getDoc,
+  getDocs,
+  collection,
+  query,
+  collectionData,
+} from '@angular/fire/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+// import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,10 +19,9 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  toggleChannels = false;
+  toggleChannels = true;
   toggleDirectMessages = false;
-  channelsList: any;
-  channels: any[] = [];
+  channels: any[] | undefined;
 
   constructor(private firestore: Firestore) {}
 
@@ -23,12 +33,19 @@ export class SidebarComponent {
     const auth = getAuth();
     onAuthStateChanged(auth, async (user: any) => {
       if (user) {
-        const userDoc = doc(this.firestore, 'channelsList', user.uid);
-        const userSnapshot = await getDoc(userDoc);
-        if (userSnapshot.exists()) {
-          this.channelsList = userSnapshot.data();
-        }
+        this.getChannelsData(user);
       }
+    });
+  }
+
+  async getChannelsData(user: { uid: string }) {
+    const userDoc = doc(this.firestore, 'users', user.uid);
+    const userSnapshot = await getDocs(collection(userDoc, 'channels'));
+    this.channels = userSnapshot.docs.map((doc) => {
+      return {
+        uid: doc.id,
+        ...doc.data(),
+      };
     });
   }
 }

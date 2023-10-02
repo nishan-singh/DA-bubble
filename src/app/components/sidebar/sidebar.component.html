@@ -10,9 +10,9 @@
       <img src="/assets/img/icons/new-msg.svg" alt="" />
     </button>
   </header>
-  <div class="sidebar-body">
+  <div class="sidebar-body" *ngIf="channels">
     <section class="channels-wrapper">
-      <button class="channels-btn" (click)="toggleChannels = !toggleChannels">
+      <button class="channels-btn" (click)="toggleChannels = toggleChannels">
         <svg
           class="channels-btn__icon"
           [ngClass]="{ 'channels-btn__active': toggleChannels }"
@@ -46,11 +46,10 @@
         class="channels-list"
         [ngClass]="{ 'channels-list__active': toggleChannels }"
       >
-        <!-- <li *ngFor="let channel of channels">
-          <button type="button">channel</button>
-        </li> -->
-        <li>
-          <button type="button"># <span>general</span></button>
+        <li *ngFor="let channel of channels">
+          <button type="button">
+            {{ channel.name }}
+          </button>
         </li>
         <li>
           <button type="button" class="add-channel-btn">
