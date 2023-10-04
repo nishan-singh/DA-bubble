@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Firestore, doc, getDocs, collection } from '@angular/fire/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
@@ -8,6 +8,8 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
+  @Output() channelEmitter = new EventEmitter<string>();
+
   toggleChannels = true;
   toggleDirectMessages = false;
   channels: any[] | undefined;
@@ -36,5 +38,9 @@ export class SidebarComponent {
         ...doc.data(),
       };
     });
+  }
+
+  emitChannelId(id: string) {
+    this.channelEmitter.emit(id);
   }
 }

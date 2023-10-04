@@ -47,7 +47,7 @@
         [ngClass]="{ 'channels-list__active': toggleChannels }"
       >
         <li *ngFor="let channel of channels">
-          <button type="button">
+          <button type="button" (click)="emitChannelId(channel.id)">
             {{ channel.name }}
           </button>
         </li>
