@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,21 +8,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./main-chat.component.scss'],
 })
 export class MainChatComponent {
-  @Input() id: string = '';
-
   constructor(
     private firestore: Firestore,
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    // console.log(this.id);
-    this.route.paramMap.subscribe((params) => {
-      this.id = params.get('id') || '';
-      console.log(this.id);
-      this.router.navigate([this.id]);
+    this.activatedRoute.paramMap.subscribe((params) => {
+      const channelId = 'channel/' + params.get('id') || '';
+      this.router.navigate([channelId]);
     });
-    // console.log(this.route.snapshot.paramMap.get('id'));
   }
 }
