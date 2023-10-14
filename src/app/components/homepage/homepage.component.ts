@@ -8,7 +8,11 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
-  constructor(private router: Router) {}
+  checkForFullWidth: any;
+
+  constructor(private router: Router) {
+    // this.timeInterval();
+  }
 
   ngOnInit() {
     const auth = getAuth();
@@ -17,5 +21,15 @@ export class HomepageComponent implements OnInit {
         this.router.navigate(['/sign-in']);
       }
     });
+  }
+
+  checkIfSidebarClosed(event: Event) {
+    this.checkForFullWidth = event;
+  }
+
+  timeInterval() {
+    setInterval(() => {
+      console.log(this.checkIfSidebarClosed);
+    }, 1000);
   }
 }
