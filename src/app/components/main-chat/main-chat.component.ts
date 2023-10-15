@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -16,8 +16,12 @@ export class MainChatComponent {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
-      const channelId = 'channel/' + params.get('id') || '';
+      const channelIdUnique = params.get('id') || '';
+      const channelId = 'channel/' + channelIdUnique;
       this.router.navigate([channelId]);
+      let chatHistory = collection(this.firestore, 'chats', channelIdUnique);
+      const getSnapshot = collectionData(chatHistory);
+      getSnapshot.subscribe((data) => console.log(data));
     });
   }
 }
