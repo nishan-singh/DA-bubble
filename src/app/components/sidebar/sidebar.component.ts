@@ -8,8 +8,9 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  @Output() channelEmitter = new EventEmitter<string>();
+  @Output() closedSidebar = new EventEmitter<boolean>();
 
+  toggleSidebar = false;
   toggleChannels = true;
   toggleDirectMessages = false;
   channels: any[] | undefined;
@@ -18,6 +19,8 @@ export class SidebarComponent {
 
   closeSidebar() {
     document.getElementById('sidebar')?.classList.toggle('sidebar-toggle');
+    this.toggleSidebar = !this.toggleSidebar;
+    return this.closedSidebar.emit(this.toggleSidebar);
   }
 
   ngOnInit() {
@@ -38,9 +41,5 @@ export class SidebarComponent {
         ...doc.data(),
       };
     });
-  }
-
-  emitChannelId(id: string) {
-    this.channelEmitter.emit(id);
   }
 }
