@@ -1,5 +1,7 @@
 @import "../../../variables-mixins.scss";
 
+$padding: $mg-small $mg-normal;
+
 .main-chat-wrapper {
   background-color: $color-secondary;
   min-width: calc(100vw - 264px - 3 * $mg-normal);
@@ -30,6 +32,10 @@ header {
       fill: $color-accent;
     }
   }
+}
+
+.messages-wrapper {
+  padding: $padding;
 }
 
 .users-list-wrapper {
@@ -64,6 +70,31 @@ header {
   }
 }
 
+.show-date {
+  @include flexCenter(row, center, center);
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: $border-color;
+    z-index: -1;
+  }
+  p {
+    text-align: center;
+    margin: $mg-small 0;
+    border: 1px solid $border-color;
+    border-radius: $br-normal;
+    padding: 6px 8px;
+    max-width: fit-content;
+    background-color: $color-secondary;
+    font-size: 0.85rem;
+  }
+}
+
 .add-user-btn {
   @include flexCenter(row, center, center);
   background-color: $bg-color;
@@ -86,8 +117,8 @@ header {
   left: 24px;
   right: 24px;
   border: 1px solid $border-color;
-  padding: $mg-small $mg-normal;
   border-radius: $br-normal;
+  padding: $padding;
   input {
     width: 100%;
   }
