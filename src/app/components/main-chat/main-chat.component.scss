@@ -95,6 +95,41 @@ header {
   }
 }
 
+.messages-list {
+  li {
+    @include flexCenter(row, flex-start, center);
+    gap: $mg-small;
+    .user-info {
+      @include flexCenter(row, flex-start, center);
+      gap: $mg-small;
+      p {
+        font-size: 0.75rem;
+        color: $color-gray;
+      }
+    }
+  }
+  .message {
+    background-color: $bg-color;
+    border-radius: 0 $br-normal $br-normal $br-normal;
+    // padding: $padding;
+    padding: 6px 10px;
+    // max-width: 60%;
+    p {
+      font-size: 0.85rem;
+    }
+  }
+
+  .thread-messages-wrapper {
+    button {
+      color: $color-accent;
+    }
+  }
+  img {
+    width: 56px;
+    height: 56px;
+  }
+}
+
 .add-user-btn {
   @include flexCenter(row, center, center);
   background-color: $bg-color;
