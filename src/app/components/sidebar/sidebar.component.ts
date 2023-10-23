@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Firestore, doc, getDocs, collection } from '@angular/fire/firestore';
+import { Firestore, getDocs, collection } from '@angular/fire/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 @Component({
@@ -25,19 +25,20 @@ export class SidebarComponent {
 
   ngOnInit() {
     const auth = getAuth();
-    onAuthStateChanged(auth, async (user: any) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
-        this.getChannelsData(user);
+        this.getChannelsData();
       }
     });
   }
 
-  async getChannelsData(user: { uid: string }) {
-    const userDoc = doc(this.firestore, 'users', user.uid);
-    const userSnapshot = await getDocs(collection(userDoc, 'channels'));
-    this.channels = userSnapshot.docs.map((doc) => {
+  async getChannelsData() {
+    const channelsRef = collection(this.firestore, 'chatRooms');
+    const channelsSnapshot = await getDocs(channelsRef);
+    // q: how to get the uid of chatRooms?
+    this.channels = channelsSnapshot.docs.map((doc) => {
       return {
-        uid: doc.id,
+        id: doc.id,
         ...doc.data(),
       };
     });
