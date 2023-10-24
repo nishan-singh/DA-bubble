@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import {
-  Firestore,
-  collection,
-  collectionData,
-  query,
-  where,
-} from '@angular/fire/firestore';
+import { Firestore, collection, getDocs } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main-chat',
@@ -14,6 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./main-chat.component.scss'],
 })
 export class MainChatComponent {
+  messages$: any;
+  routeSub: Subscription | undefined;
+
   constructor(
     private firestore: Firestore,
     private activatedRoute: ActivatedRoute,
@@ -21,17 +19,33 @@ export class MainChatComponent {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((params) => {
+    this.routeSub = this.activatedRoute.paramMap.subscribe((params) => {
       const channelIdUnique = params.get('id') || '';
       const channelId = 'channel/' + channelIdUnique;
-      this.router.navigate([channelId]);
-      const chatHistory = query(
-        collection(this.firestore, 'chats'),
-        where('chatRoom', '==', channelIdUnique)
-      );
-      // let chatHistory = collection(this.firestore, 'chats', channelIdUnique);
-      const getSnapshot = collectionData(chatHistory);
-      getSnapshot.subscribe((data) => console.log(data));
+      this.getMessages(channelId);
+      this.showChannelComp(channelId);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.routeSub?.unsubscribe();
+  }
+
+  showChannelComp(channelId: string) {
+    this.router.navigate([channelId]);
+  }
+
+  getMessages(channelId: string): void {
+    const channelRef = collection(this.firestore, 'chatRooms');
+    const docSnap = getDocs(channelRef);
+    docSnap.then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(doc.data);
+        return (this.messages$ = {
+          id: doc.id,
+          ...doc.data(),
+        });
+      });
     });
   }
 }
