@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Firestore, collection, getDocs } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main-chat',
