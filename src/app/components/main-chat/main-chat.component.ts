@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { Firestore, collection, getDocs } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -29,23 +35,25 @@ export class MainChatComponent {
 
   ngOnDestroy(): void {
     this.routeSub?.unsubscribe();
+    this.messages$.unsubscribe();
   }
 
   showChannelComp(channelId: string) {
     this.router.navigate([channelId]);
   }
 
-  getMessages(channelId: string): void {
-    const channelRef = collection(this.firestore, 'chatRooms');
-    const docSnap = getDocs(channelRef);
-    docSnap.then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log(doc.data);
-        return (this.messages$ = {
-          id: doc.id,
-          ...doc.data(),
-        });
-      });
+  async getMessages(channelId: string) {
+    const channelsRef = collection(this.firestore, 'chats');
+    //const chatQuery = query(channelsRef, where('message', '==', 'Hi there!'));
+    //const channelsSnapshot = await getDocs(chatQuery);
+    const channelsSnapshot = await getDocs(channelsRef);
+    console.log(channelsSnapshot);
+    // q: how to get the uid of chatRooms?
+    this.messages$ = channelsSnapshot.docs.map((doc) => {
+      return {
+        //id: doc.id,
+        ...doc.data(),
+      };
     });
   }
 }
