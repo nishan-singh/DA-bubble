@@ -23,13 +23,7 @@ export class HomepageComponent implements OnInit {
     });
   }
 
-  checkIfSidebarClosed(event: Event) {
-    this.checkForFullWidth = event;
-  }
-
-  timeInterval() {
-    setInterval(() => {
-      console.log(this.checkIfSidebarClosed);
-    }, 1000);
+  checkIfSidebarClosed($event: Event) {
+    console.log($event);
   }
 }
