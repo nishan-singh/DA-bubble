@@ -17,12 +17,6 @@ export class SidebarComponent {
 
   constructor(private firestore: Firestore) {}
 
-  closeSidebar() {
-    document.getElementById('sidebar')?.classList.toggle('sidebar-toggle');
-    this.toggleSidebar = !this.toggleSidebar;
-    return this.closedSidebar.emit(this.toggleSidebar);
-  }
-
   ngOnInit() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
@@ -32,10 +26,15 @@ export class SidebarComponent {
     });
   }
 
+  closeSidebar() {
+    document.getElementById('sidebar')?.classList.toggle('sidebar-toggle');
+    this.toggleSidebar = !this.toggleSidebar;
+    this.closedSidebar.emit(this.toggleSidebar);
+  }
+
   async getChannelsData() {
     const channelsRef = collection(this.firestore, 'chatRooms');
     const channelsSnapshot = await getDocs(channelsRef);
-    // q: how to get the uid of chatRooms?
     this.channels = channelsSnapshot.docs.map((doc) => {
       return {
         id: doc.id,
