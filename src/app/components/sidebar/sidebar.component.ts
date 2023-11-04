@@ -8,7 +8,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  @Output() closedSidebar = new EventEmitter<boolean>();
+  @Output() sidebarToggleVal = new EventEmitter<boolean>();
 
   toggleSidebar = false;
   toggleChannels = true;
@@ -29,7 +29,7 @@ export class SidebarComponent {
   closeSidebar() {
     document.getElementById('sidebar')?.classList.toggle('sidebar-toggle');
     this.toggleSidebar = !this.toggleSidebar;
-    this.closedSidebar.emit(this.toggleSidebar);
+    this.sidebarToggleVal.emit(this.toggleSidebar);
   }
 
   async getChannelsData() {
