@@ -23,7 +23,7 @@ export class HomepageComponent implements OnInit {
     });
   }
 
-  checkIfSidebarClosed($event: Event) {
+  checkIfSidebarClosed($event: boolean) {
     console.log($event);
   }
 }
