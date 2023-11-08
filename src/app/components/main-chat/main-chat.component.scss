@@ -5,10 +5,14 @@ $padding: $mg-small $mg-normal;
 .main-chat-wrapper {
   background-color: $color-secondary;
   min-width: calc(100vw - 264px - 3 * $mg-normal);
-  width: 100%;
   min-height: calc(100vh - 1.5 * $header-height);
   border-radius: $br-big;
   position: relative;
+}
+
+.full-width {
+  min-width: calc(100vw - 2 * $mg-normal);
+  margin-inline: $mg-normal;
 }
 
 header {
