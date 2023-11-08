@@ -1,4 +1,9 @@
-<section class="main-chat-wrapper">
+<section
+  class="main-chat-wrapper"
+  [ngClass]="{
+    'full-width': globalVariables.trackSidebar, 
+  }"
+>
   <header>
     <button class="group-info-btn">
       <h4>#EntwicklerTeam</h4>

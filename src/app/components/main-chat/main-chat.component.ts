@@ -8,6 +8,7 @@ import {
 } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { VariableUtilityService } from 'src/app/variable-utility.service';
 
 @Component({
   selector: 'app-main-chat',
@@ -21,7 +22,8 @@ export class MainChatComponent {
   constructor(
     private firestore: Firestore,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public globalVariables: VariableUtilityService
   ) {}
 
   ngOnInit(): void {
