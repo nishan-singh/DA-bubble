@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Firestore, getDocs, collection } from '@angular/fire/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { VariableUtilityService } from 'src/app/variable-utility.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,14 +9,15 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  @Output() sidebarToggleVal = new EventEmitter<boolean>();
-
   toggleSidebar = false;
   toggleChannels = true;
   toggleDirectMessages = false;
   channels: any[] | undefined;
 
-  constructor(private firestore: Firestore) {}
+  constructor(
+    private firestore: Firestore,
+    private globalVariables: VariableUtilityService
+  ) {}
 
   ngOnInit() {
     const auth = getAuth();
@@ -27,9 +29,9 @@ export class SidebarComponent {
   }
 
   closeSidebar() {
-    document.getElementById('sidebar')?.classList.toggle('sidebar-toggle');
     this.toggleSidebar = !this.toggleSidebar;
-    this.sidebarToggleVal.emit(this.toggleSidebar);
+    document.getElementById('sidebar')?.classList.toggle('sidebar-toggle');
+    this.globalVariables.trackSidebar = this.toggleSidebar;
   }
 
   async getChannelsData() {
