@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Firestore, getDocs, collection } from '@angular/fire/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { VariableUtilityService } from 'src/app/variable-utility.service';
+import { VariableUtilityService } from '../../services/variable-utility.service';
 
 @Component({
   selector: 'app-sidebar',

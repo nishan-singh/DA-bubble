@@ -8,7 +8,7 @@ import {
 } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { VariableUtilityService } from 'src/app/variable-utility.service';
+import { VariableUtilityService } from '../../services/variable-utility.service';
 
 @Component({
   selector: 'app-main-chat',
