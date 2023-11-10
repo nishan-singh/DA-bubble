@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { AuthService } from 'src/app/firebase-services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -17,7 +17,11 @@ export class SignInComponent {
   isSubmitted = false;
   errorMsg: string | undefined;
 
-  constructor(private router: Router, private fm: FormBuilder) {
+  constructor(
+    private router: Router,
+    private fm: FormBuilder,
+    private authService: AuthService
+  ) {
     setTimeout(() => {
       this.animationState = false;
     }, 750);
@@ -25,17 +29,15 @@ export class SignInComponent {
 
   signIn() {
     if (this.registerForm.invalid) return;
-    const auth = getAuth();
-    signInWithEmailAndPassword(
-      auth,
-      this.registerForm.value.email || '',
-      this.registerForm.value.password || ''
-    )
-      .then((userCredential) => {
+    this.authService
+      .signIn(
+        this.registerForm.value.email || '',
+        this.registerForm.value.password || ''
+      )
+      .then(() => {
         this.router.navigate(['/']);
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         this.errorMsg = errorMessage;
       });
@@ -43,11 +45,8 @@ export class SignInComponent {
   }
 
   guestLogin() {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, 'guest@gmail.com', 'Password12345').then(
-      (userCredential) => {
-        this.router.navigate(['/']);
-      }
-    );
+    this.authService.signIn('guest@gmail.com', 'Password12345').then(() => {
+      this.router.navigate(['/']);
+    });
   }
 }
