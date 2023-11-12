@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-homepage',
@@ -8,11 +8,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
-  checkForFullWidth: any;
-
-  constructor(private router: Router) {
-    // this.timeInterval();
-  }
+  constructor(private router: Router) {}
 
   ngOnInit() {
     const auth = getAuth();
@@ -21,9 +17,5 @@ export class HomepageComponent implements OnInit {
         this.router.navigate(['/sign-in']);
       }
     });
-  }
-
-  checkIfSidebarClosed($event: boolean) {
-    console.log($event);
   }
 }
