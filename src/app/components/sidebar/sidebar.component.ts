@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Firestore, getDocs, collection } from '@angular/fire/firestore';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { VariableUtilityService } from '../../services/variable-utility.service';
+import { VariableUtilityService } from 'src/app/services/variable-utility.service';
+import { AuthService } from 'src/app/firebase-services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,16 +16,12 @@ export class SidebarComponent {
 
   constructor(
     private firestore: Firestore,
-    private globalVariables: VariableUtilityService
+    private globalVariables: VariableUtilityService,
+    private auth: AuthService
   ) {}
 
-  ngOnInit() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        this.getChannelsData();
-      }
-    });
+  ngAfterViewInit() {
+    this.auth.getAuthState(this.getChannelsData.bind(this));
   }
 
   closeSidebar() {

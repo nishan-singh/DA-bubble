@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
-  Auth,
+  User,
   UserCredential,
   getAuth,
   signInWithEmailAndPassword,
@@ -15,5 +15,16 @@ export class AuthService {
 
   signIn(email: string, password: string): Promise<UserCredential> {
     return signInWithEmailAndPassword(getAuth(), email, password);
+  }
+
+  getAuthState(getChannels: () => void): void {
+    onAuthStateChanged(getAuth(), (user: User | null) => {
+      if (user) {
+        getChannels();
+        return user;
+      } else {
+        return null;
+      }
+    });
   }
 }
